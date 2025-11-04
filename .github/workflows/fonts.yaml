@@ -13,13 +13,14 @@ jobs:
     name: Create fonts
 
     steps:
+      - name: Checkout this main repo
       - uses: actions/checkout@HEAD
 
-      - name: Checkout cn
+      - name: Checkout cn repo
         uses: actions/checkout@HEAD
         with:
-          path: dustincys.github.io/cn
           repository: dustincys/cn
+          path: cn
           submodules: recursive
 
       - name: Install packages
