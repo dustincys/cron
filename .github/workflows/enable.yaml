@@ -16,16 +16,22 @@ jobs:
 
     steps:
       - uses: actions/checkout@HEAD
+        with:
+          persist-credentials: true
+
       - name: Keep myself alive every month
         run: |
-          [ $(date '+%d') != '01' ] && exit 0 || true
+          [ "$(date '+%d')" != "01" ] && exit 0
+
           if [ -f dummy.txt ]; then
             rm dummy.txt
           else
             touch dummy.txt
           fi
+
           git config user.name github-actions
           git config user.email github-actions@github.com
+
           git add .
-          git commit -m "dummy change"
-          git push
+          git commit -m "dummy change" || exit 0
+          git push origin HEAD
