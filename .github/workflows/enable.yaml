@@ -14,6 +14,9 @@ jobs:
 
     name: Enable GHA
 
+    permissions:
+          contents: write  # Allows the action to push code/fonts to the repo
+
     steps:
       - uses: actions/checkout@HEAD
         with:

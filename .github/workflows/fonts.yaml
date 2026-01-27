@@ -12,6 +12,9 @@ jobs:
 
     name: Create fonts
 
+    permissions:
+          contents: write  # Allows the action to push code/fonts to the repo
+
     steps:
       - name: Checkout this main repo
         uses: actions/checkout@HEAD
